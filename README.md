@@ -23,7 +23,9 @@ Table 1. Simulated true toxicity rates.
 
 ## Results 
 <img width="416" height="278" alt="image" src="https://github.com/user-attachments/assets/00d7f937-2707-4f01-85e7-08efb849bcdd" />
+
 Fig. 2. Selection percentages of final MTD for each scenario by dose level and method. Dose level 0 represents cases where the trial was terminated early due to high toxicity at first dose.
+
 
 In Scenario 1, where the true MTD was at dose level 2, IP-CRM selected dose 1 most frequent-ly (67.75%), followed by dose 2 (26.55%), with very few selections for higher doses. This indicates that IP-CRM tended to favor lower doses, even though dose 2 was the true MTD. CRM also selected dose 1 most often (59.55%) but also showed substantial selection of dose 2 (21.25%) and dose 3 (18.45%), indicating some variability and less precision. The 3+3 method selected dose 1 most frequently (49.50%) and dose 2 (29.20%), showing a greater degree of accuracy in selecting the true MTD, but it still over-selected dose 1 more than necessary.
 
