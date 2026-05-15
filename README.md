@@ -6,21 +6,24 @@ The method proposed by Guo and Liu is the Intra-Patient Continuous Reassessment 
 
 <img width="418" height="313" alt="image" src="https://github.com/user-attachments/assets/00a548b1-3438-4a79-9f0f-490ab493333a" />
 
+Fig. 1. Schematic showing the steps of the IP-CRM dose-finding strategy. 
+
 ## Simulation Study
 A simulation study was conducted to evaluate the performance of the IP-CRM in comparison to the standard 3+3 method and CRM in situations with a relatively small number of participants. The simulations were set up with the following parameters: 5 dose levels (J), a maximum of 9 patients (N), and a cohort size of 3 patients. The target toxicity rate was set to 0.3, representing the desired toxicity rate for identifying the MTD. Additionally, prior distributions were defined for the logistic regression parameters used in the Bayesian models of IP-CRM and CRM, with β_0  ~ N(0,1) and β_1  ~ Exp(1). A relatively uninformative distribution for the intercept term was chosen to avoid biasing the estimate for the dose effect, β_1. The prior distribution for the dose effect was chosen based on what was specified in the original article. A Gibbs sampling algorithm was used to sample from the posterior distribution of the model parameters using the ‘R2jags’ package in R. The maximum number of titrations for each patient was limited to 3, and an early termination toxicity threshold of 0.5 was applied for the IP-CRM method to stop the trial early if toxicity at the lowest dose level exceeded this threshold.
 
 Four true toxicity scenarios were simulated, each representing different patterns of toxicity for the dose levels. In Scenario 1, the true MTD was at dose level 2 with increasing toxicity probabilities. Scenario 2 had the true MTD at dose level 3 and Scenario 3 had the MTD at dose level 4. Scenario 4 presented a non-monotonic increase in toxicity, with the true MTD at dose level 2 but with a less predictable pattern of toxicity across dose levels. Full descriptions of the true toxicity rates for each scenario are presented in Table 1. The simulation was conducted across 2000 trials for each of the four toxicity scenarios, and for each trial, the final MTD and safety index (the proportion of toxic patients) were recorded for each method.
 
 Table 1. Simulated true toxicity rates.
-Scenario	True toxicity rates respective to dose levels 1-5
-1	0.1, 0.3, 0.55, 0.65, 0.75
-2	0.05, 0.15, 0.3, 0.5, 0.8
-3	0.02, 0.05, 0.1, 0.3, 0.5
-4	0.05, 0.3, 0.2, 0.4, 0.6
+|Scenario|True toxicity rates respective to dose levels 1-5|
+|--------|-------------------------------------------------|
+|1| 0.1, **0.3**, 0.55, 0.65, 0.75
+2|	0.05, 0.15, **0.3**, 0.5, 0.8
+3|	0.02, 0.05, 0.1, **0.3**, 0.5
+4|	0.05, **0.3**, 0.2, 0.4, 0.6
 
 ## Results 
 <img width="416" height="278" alt="image" src="https://github.com/user-attachments/assets/00d7f937-2707-4f01-85e7-08efb849bcdd" />
-Fig. 2. Selection percentages of final MTD for each scenario by dose level and method. Dose level 0 represents cases where the trial was terminated early due to high toxicity at first dose. 
+Fig. 2. Selection percentages of final MTD for each scenario by dose level and method. Dose level 0 represents cases where the trial was terminated early due to high toxicity at first dose.
 
 In Scenario 1, where the true MTD was at dose level 2, IP-CRM selected dose 1 most frequent-ly (67.75%), followed by dose 2 (26.55%), with very few selections for higher doses. This indicates that IP-CRM tended to favor lower doses, even though dose 2 was the true MTD. CRM also selected dose 1 most often (59.55%) but also showed substantial selection of dose 2 (21.25%) and dose 3 (18.45%), indicating some variability and less precision. The 3+3 method selected dose 1 most frequently (49.50%) and dose 2 (29.20%), showing a greater degree of accuracy in selecting the true MTD, but it still over-selected dose 1 more than necessary.
 
